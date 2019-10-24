@@ -32,3 +32,26 @@ data_final = data_final.rename(columns = {"user_y": "users", "rating_y": "rating
 len(data_final["item"].unique()) #6,909 unique items
 len(data_final["users"].unique()) #17,659 unique users
 export_csv = data_final.to_csv ('/Users/wuyanxu/Desktop/finaldata.csv', index = None, header=None)
+
+random.seed(1024)
+file_path = os.path.expanduser('/Users/wuyanxu/Desktop/finaldata.csv')
+
+reader = Reader(line_format='item user rating', sep=',')
+
+data = Dataset.load_from_file(file_path, reader=reader)
+
+sim_options = {'name': 'cosine',
+               'user_based': True 
+               }
+
+min_mean = float("inf")
+optimal_k = 1
+
+for k in [10,20,30,40,50,60,70,80,90,100]:
+    algo = KNNBasic(sim_options=sim_options, k=k)
+    x = cross_validate(algo, data, verbose=True)
+    cur_mean = np.mean(x['test_rmse'])
+    if(cur_mean < min_mean):
+        min_mean = cur_mean
+        optimal_k = k
+    print("current optimal K={} min mean={}".format(optimal_k, min_mean))
