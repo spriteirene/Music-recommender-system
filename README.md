@@ -1,1 +1,2 @@
-# Music-recommender-system
+# Music recommender system
+A Recommender system is a tool used to filter information and give suggestions and predictions for people. For an individual, a recommender system helps people find the most suitable things for them. For commercial business, a recommender system helps companies to keep customers through providing unique advice. A good recommender system saves time for people and brings profits to these businesses. In this paper, I will introduce how recommender system works and apply it to the field of music. There are several methods used in the recommender system which are collaborative filtering, content-based filtering, context-based filtering and hybrid recommendation approaches. 
