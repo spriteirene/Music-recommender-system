@@ -294,4 +294,4 @@ def custom_sort(t):
 result.sort(key=custom_sort)
 for x in result:
     print(x)
-print(accuracy.rmse(predictions, verbose=True))
+
